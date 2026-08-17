@@ -14,17 +14,15 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building project'
-                bat 'mvn -f seljen\\pom.xml clean compile'
+                bat 'mvn clean compile'
             }
         }
 
-        stage('Run Selenium Tests') {
+        stage('Run Selenium') {
             steps {
-                echo 'Running Selenium tests'
-                bat 'mvn -f seljen\\pom.xml test'
+                echo 'Running Selenium application'
+                bat 'mvn exec:java "-Dexec.mainClass=CE.App"'
             }
         }
     }
 }
-
-
